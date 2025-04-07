@@ -1,6 +1,7 @@
 package br.lamao.tdd.ex3;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -45,6 +46,29 @@ public class CalculadoraSalarioTest {
                Arguments.of("Mariana Ribeiro", "mariana.ribeiro@empresa.com", 2000.01, CargoEnum.DBA, 1500.0075),
                Arguments.of("Nicolas Mendes", "nicolas.mendes@empresa.com", 4999.99, CargoEnum.GERENTE, 3999.992),
                Arguments.of("Olivia Barbosa", "olivia.barbosa@empresa.com", 2000.01, CargoEnum.TESTADOR, 1500.0075),
-               Arguments.of("Paulo Araujo", "paulo.araujo@empresa.com", 0.0, null, 0.0));
+               Arguments.of("Paulo Araujo", "paulo.araujo@empresa.com", 0.0, null, 0.0)
+                );
+
     }
+
+    @Test
+    void deveRetornarZeroQuandoFuncionarioForNull() {
+        CalculadoraSalario calc = new CalculadoraSalario();
+        Assertions.assertEquals(0.0, calc.calcular(null));
+    }
+
+    @Test
+    void deveRetornarZeroQuandoCargoForNull() {
+        Funcionario f = new Funcionario("Joao", "joao@email.com", 2000.0, null);
+        CalculadoraSalario calc = new CalculadoraSalario();
+        Assertions.assertEquals(0.0, calc.calcular(f));
+    }
+
+    @Test
+    void deveRetornarZeroQuandoSalarioBaseForNull() {
+        Funcionario f = new Funcionario("Joao", "joao@email.com", null, CargoEnum.DESENVOLVEDOR);
+        CalculadoraSalario calc = new CalculadoraSalario();
+        Assertions.assertEquals(0.0, calc.calcular(f));
+    }
+
 }

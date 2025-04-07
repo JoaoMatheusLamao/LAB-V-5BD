@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersonDAO {
-    public void save(Person p) {
-        System.out.println("Pessoa inserida com sucesso: " + p.getName());
-    }
+
 
     public List<String> isValidToInclude(Person p) {
         List<String> errors = new ArrayList<>();

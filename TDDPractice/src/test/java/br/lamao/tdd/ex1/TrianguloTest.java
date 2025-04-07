@@ -102,4 +102,18 @@ public void deveRetornarFalsoParaTodosValoresZero() {
     assertFalse(triangulo.isTriangulo());
     assertNull(triangulo.getTipo());
 }
+    @Test
+    public void deveRetornarFalsoQuandoLado2Zero() {
+        Triangulo triangulo = new Triangulo(4, 0, 4);
+        assertFalse(triangulo.isTriangulo());
+        assertNull(triangulo.getTipo());
+    }
+
+    @Test
+    public void deveRetornarFalsoQuandoLado3Zero() {
+        Triangulo triangulo = new Triangulo(4, 4, 0);
+        assertFalse(triangulo.isTriangulo());
+        assertNull(triangulo.getTipo());
+    }
+
 }
